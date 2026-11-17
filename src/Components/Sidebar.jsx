@@ -2,9 +2,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const images = [
+    { src: "/banner_olimpicos.webp", alt: "Juegos Olímpicos" },
+    { src: "/banner-entrevista.webp", alt: "Entrevistas" },
+    { src: "/cocina-banner.webp", alt: "Innovación en la cocina" },
+    { src: "/Juegos.jpg", alt: "Videojuegos" },
+  ];
 
   const handleGoToGaleria = () => {
-    navigate("/galeria"); // asegúrate de tener configurada esta ruta
+    navigate("/archivo/2025/galeria");
   };
 
   return (
@@ -18,26 +24,14 @@ export default function Sidebar() {
           📸Galería
         </h3>
         <div className="grid grid-cols-2 gap-2">
-          <img
-            src="/img1.jpg"
-            alt="Recuerdo 1"
-            className="h-24 w-full object-cover rounded-lg"
-          />
-          <img
-            src="/img2.jpg"
-            alt="Recuerdo 2"
-            className="h-24 w-full object-cover rounded-lg"
-          />
-          <img
-            src="/img3.jpg"
-            alt="Recuerdo 3"
-            className="h-24 w-full object-cover rounded-lg"
-          />
-          <img
-            src="/img4.jpg"
-            alt="Recuerdo 4"
-            className="h-24 w-full object-cover rounded-lg"
-          />
+          {images.map((image) => (
+            <img
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              className="h-24 w-full object-cover rounded-lg"
+            />
+          ))}
         </div>
         <p className="text-gray-500 text-sm mt-3">
           Haz clic para ver más fotos y momentos

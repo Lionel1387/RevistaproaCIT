@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom"; // <- Importamos useNavigate
 
@@ -11,12 +11,10 @@ const data = {
     {
       title: "📜 Historia del Gaming",
       text: "Desde los primeros arcades hasta el cloud gaming, los videojuegos han evolucionado constantemente. Doom revolucionó la acción rápida y los juegos retro vuelven gracias a la nostalgia.",
-      img: "https://via.placeholder.com/400x200?text=Historia+Gaming"
     },
     {
       title: "🇦🇷 Argentina Gamer",
       text: "La escena gamer en Argentina crece cada año con eventos como EVA 2025. Los desarrolladores locales destacan en programación, diseño y narrativa, dejando huella internacional.",
-      img: "https://via.placeholder.com/400x200?text=Argentina+Gamer"
     }
   ],
   novedades: [
@@ -56,26 +54,12 @@ const data = {
 
 const SeccionVideojuegos = () => {
   const navigate = useNavigate(); // <- Inicializamos navigate
-
-  useEffect(() => {
-    // Scroll suave al cargar la sección
-    window.scrollTo({
-      top: 400, // Ajusta la altura deseada
-      behavior: "smooth",
-    });
-  }, []);
-
-  const handleScrollAndNavigate = (path) => {
-    navigate(path); // Navegamos al Home
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll suave al inicio
-    }, 100);
-  };
+  const AnimatedDiv = motion.div;
 
   return (
     <section className="px-4 md:px-16 py-12 bg-gray-50">
       {/* Intro */}
-      <motion.div
+      <AnimatedDiv
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -84,12 +68,12 @@ const SeccionVideojuegos = () => {
       >
         <h1 className="text-4xl font-bold mb-4">{data.intro.title}</h1>
         <p className="text-gray-800 max-w-3xl mx-auto">{data.intro.text}</p>
-      </motion.div>
+      </AnimatedDiv>
 
       {/* Historia y Argentina Gamer */}
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         {data.historia.map((item, idx) => (
-          <motion.div
+          <AnimatedDiv
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -98,18 +82,17 @@ const SeccionVideojuegos = () => {
             className="p-6 rounded-xl shadow-lg bg-gradient-to-r from-indigo-400 to-indigo-200"
           >
             <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
-            <img
-              src={item.img}
-              alt={item.title}
-              className="w-full h-48 object-cover rounded mb-4"
-            />
+            <div className="videojuego-imagen-pendiente" role="img" aria-label={`Imagen por incorporar: ${item.title}`}>
+              <span>{item.title}</span>
+              <small>Imagen por incorporar</small>
+            </div>
             <p className="text-gray-800">{item.text}</p>
-          </motion.div>
+          </AnimatedDiv>
         ))}
       </div>
 
       {/* Novedades */}
-      <motion.div
+      <AnimatedDiv
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -122,10 +105,10 @@ const SeccionVideojuegos = () => {
             <li key={idx}>{item}</li>
           ))}
         </ul>
-      </motion.div>
+      </AnimatedDiv>
 
       {/* Más allá del entretenimiento */}
-      <motion.div
+      <AnimatedDiv
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -138,12 +121,12 @@ const SeccionVideojuegos = () => {
             <li key={idx}>{item}</li>
           ))}
         </ul>
-      </motion.div>
+      </AnimatedDiv>
 
       {/* Entrevistas */}
       <div className="grid md:grid-cols-2 gap-8">
         {data.entrevistas.map((block, idx) => (
-          <motion.div
+          <AnimatedDiv
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -157,14 +140,14 @@ const SeccionVideojuegos = () => {
                 <li key={qidx}>{q}</li>
               ))}
             </ul>
-          </motion.div>
+          </AnimatedDiv>
         ))}
       </div>
 
       {/* Botón de volver al home */}
       <div className="flex justify-center mt-10">
         <button
-          onClick={() => handleScrollAndNavigate("/")}
+          onClick={() => navigate("/archivo/2025")}
           className="text-white font-semibold px-6 py-3 rounded-lg bg-[#7b91fe] hover:bg-[#6b81ee] transition-colors"
         >
           Volver

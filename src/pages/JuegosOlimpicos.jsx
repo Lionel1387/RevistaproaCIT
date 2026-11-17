@@ -1,23 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const JuegosOlimpicos = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Scroll suave al entrar en la sección
-    window.scrollTo({
-      top: 400, // ajusta la cantidad de pixeles que quieres bajar
-      behavior: "smooth",
-    });
-  }, []);
-
-  const handleScrollAndNavigate = (path) => {
-    navigate(path);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 100);
-  };
 
   return (
     <section className="p-6 md:p-10 max-w-7xl mx-auto space-y-12">
@@ -135,7 +120,7 @@ const JuegosOlimpicos = () => {
       {/* Botón de volver al home */}
       <div className="flex justify-center mt-10">
         <button
-          onClick={() => handleScrollAndNavigate("/")}
+          onClick={() => navigate("/archivo/2025")}
           className="text-white font-semibold px-6 py-3 rounded-lg bg-[#7b91fe] hover:bg-[#6b81ee] transition-colors"
         >
           Volver

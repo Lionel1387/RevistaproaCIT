@@ -1,13 +1,8 @@
 // src/pages/SobreLaRevista.jsx
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function SobreLaRevista() {
-  useEffect(() => {
-    // Scroll suave al montar el componente
-    window.scrollTo({ top: 400, behavior: "smooth" });
-  }, []);
-
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Título */}
@@ -56,7 +51,7 @@ export default function SobreLaRevista() {
       {/* Botón para volver al Home */}
       <div className="flex justify-center mt-10">
         <Link 
-          to="/"
+          to="/archivo/2025"
           className="text-white font-semibold px-6 py-3 rounded-lg bg-[#7b91fe] hover:bg-[#6b81ee] transition-colors"
         >
           Volver

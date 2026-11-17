@@ -5,7 +5,7 @@ export default function HeroArticle() {
     <section className="relative h-[70vh] overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/public/imgHeroArticle.jpg"
+          src="/imgHeroArticle.jpg"
           alt="Artículo principal"
           className="w-full h-full object-cover"
         />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const tecnicas = [
@@ -27,28 +27,12 @@ const curiosidades = [
 export default function CocinaSection() {
   const navigate = useNavigate();
 
-  // Scroll automático al cargar la sección
-  useEffect(() => {
-    window.scrollTo({
-      top: 400, // más abajo
-      behavior: "smooth", // efecto suave
-    });
-  }, []);
-
-  const handleScrollAndNavigate = (path) => {
-    navigate(path);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-
   return (
     <section className="bg-gray-50 py-16 px-4 text-gray-800">
       <div className="max-w-6xl mx-auto text-center space-y-12">
         {/* Historia y tecnología */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold text-gray-700">🍳 La Ciencia e Innovación en la Cocina</h2>
+          <h1 className="text-4xl font-bold text-gray-700">🍳 La Ciencia e Innovación en la Cocina</h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto">
             La gastronomía ha evolucionado desde la recolección y caza prehistórica hasta convertirse en un arte culinario reconocido.  
             La tecnología se integró para mejorar técnicas y crear experiencias únicas, como la impresión 3D de alimentos y la cocina molecular.
@@ -111,7 +95,7 @@ export default function CocinaSection() {
         {/* Botón de volver al home con scroll suave */}
         <div className="mt-10">
           <button
-            onClick={() => handleScrollAndNavigate("/")}
+            onClick={() => navigate("/archivo/2025")}
             className="text-white font-semibold px-6 py-3 rounded-lg bg-[#7b91fe] hover:bg-[#6b81ee] transition-colors"
           >
             Volver
