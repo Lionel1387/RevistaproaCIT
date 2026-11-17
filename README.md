@@ -36,3 +36,6 @@ Para validar la aplicación:
 npm run build
 npm run lint
 ```
+
+En Vercel, `vercel.json` redirige las rutas de React Router a la aplicación para
+que también funcionen al recargar o abrir directamente una sección.
